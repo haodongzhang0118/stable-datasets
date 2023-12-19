@@ -9,18 +9,9 @@ from tqdm import tqdm
 
 
 
-class CIFAR10(Dataset):
+class Country211(Dataset):
     """Image classification.
-    The `CIFAR-10 < https: // www.cs.toronto.edu/~kriz/cifar.html >`_ dataset
-    was collected by Alex Krizhevsky, Vinod Nair, and Geoffrey
-    Hinton. It consists of 60000 32x32 colour images in 10 classes, with
-    6000 images per class. There are 50000 training images and 10000 test images.
-    The dataset is divided into five training batches and one test batch,
-    each with 10000 images. The test batch contains exactly 1000 randomly
-    selected images from each class. The training batches contain the
-    remaining images in random order, but some training batches may
-    contain more images from one class than another. Between them, the
-    training batches contain exactly 5000 images from each class.
+    In the paper, we used an image classification dataset called Country211, to evaluate the model's capability on geolocation. To do so, we filtered the YFCC100m dataset that have GPS coordinate corresponding to a ISO-3166 country code and created a balanced dataset by sampling 150 train images, 50 validation images, and 100 test images images for each country.
 
     Parameters
     ----------
@@ -42,48 +33,27 @@ class CIFAR10(Dataset):
 
     """
 
-    @property
-    def md5(self):
-        return {"cifar-10-python.tar.gz":"c58f30108f718f92721af3b95e74349a"}
 
     @property
     def urls(self):
         return {
-        "cifar-10-python.tar.gz": "https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz"
+        "country211.tgz": "https://openaipublic.azureedge.net/clip/data/country211.tgz"
         }
 
     @property
     def num_classes(self):
-        return 10
+        return 211
  
-    @property
-    def num_samples(self):
-        return 50000
 
     @property
-    def name(self):
-        return "CIFAR10"
-    
-    @property
-    def label_to_name(self, label):
-        return {
-            0: "airplane",
-            1: "automobile",
-            2: "bird",
-            3: "cat",
-            4: "deer",
-            5: "dog",
-            6: "frog",
-            7: "horse",
-            8: "sheep",
-            9: "truck",
-        }[label]
+    def website(self):
+        return "https://github.com/openai/CLIP/blob/main/data/country211.md"
 
 
     def load(self):
         t0 = time.time()
     
-        tar = tarfile.open(self.path / self.name / "cifar-10-python.tar.gz", 
+        tar = tarfile.open(self.path / self.name / list(self.urls.keys())[0], 
                 "r:gz")
     
         # Load train set

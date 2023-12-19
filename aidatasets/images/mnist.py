@@ -1,17 +1,12 @@
 import os
 import pickle
 import gzip
-from ..utils import download_dataset
+from ..utils import Dataset
 import time
 
-_dataset = "mnist"
-
-_urls = {"mnist.pkl.gz": "http://deeplearning.net/data/mnist/mnist.pkl.gz"}
-SHAPE = (1, 28, 28)
-N_SAMPLES = 60000
 
 
-def load(path=None):
+class MNIST(Dataset):
     """
 
     The MNIST database of handwritten digits, available from this page
@@ -46,33 +41,27 @@ def load(path=None):
 
     """
 
-    download_dataset(_dataset, _urls, path)
 
-    t0 = time.time()
+    @property
+    def urls(self):
+        return {"mnist.pkl.gz": "http://deeplearning.net/data/mnist/mnist.pkl.gz"}
 
-    # Loading the file
-    print("Loading mnist")
-    f = gzip.open(os.path.join(path, "mnist/mnist.pkl.gz"), "rb")
-    train_set, valid_set, test_set = pickle.load(f, encoding="latin1")
-    f.close()
+    @property
+    def image_shape(self):
+        return (1,28,28)
 
-    train_set = (
-        train_set[0].reshape((-1, 28, 28, 1)).astype("float32"),
-        train_set[1].astype("int32"),
-    )
-    test_set = (
-        test_set[0].reshape((-1, 28, 28, 1)).astype("float32"),
-        test_set[1].astype("int32"),
-    )
-    valid_set = (
-        valid_set[0].reshape((-1, 28, 28, 1)).astype("float32"),
-        valid_set[1].astype("int32"),
-    )
-    dataset = {
-        "train": {"X": train_set[0], "y": train_set[1]},
-        "test": {"X": test_set[0], "y": test_set[1]},
-        "val": {"X": valid_set[0], "y": valid_set[1]},
-    }
-    print("Dataset mnist loaded in {0:.2f}s.".format(time.time() - t0))
-
-    return dataset
+    def load(self):
+        t0 = time.time()
+        print("Loading mnist")
+        f = gzip.open(self.path / "mnist/mnist.pkl.gz", "rb")
+        train_set, valid_set, test_set = pickle.load(f, encoding="latin1")
+        f.close()
+    
+        self["train_X"] = train_set[0].reshape((-1, 28, 28, 1))
+        self["train_y"] = train_set[1]
+        self["test_X"] = test_set[0].reshape((-1, 28, 28, 1))
+        self["test_y"] = test_set[1]
+        self["valid_X"] = valid_set[0].reshape((-1, 28, 28, 1))
+        self["valid_y"] = valid_set[1]
+        print("Dataset mnist loaded in {0:.2f}s.".format(time.time() - t0))
+        return dataset

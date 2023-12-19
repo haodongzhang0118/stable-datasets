@@ -1,21 +1,27 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from .ibeans import IBeans
+from .flowers102 import Flowers102
+from .cifar10 import CIFAR10
+from .cifar100 import CIFAR100
+from .food101 import Food101
+from .fgvcaircraft import FGVCAircraft
+from .country211 import Country211
+from .mnist import MNIST
+from .fashionmnist import FashionMNIST
+from .cub200 import CUB200
+from .svhn import SVHN
+from .rock_paper_scissor import RockPaperScissor
+
 from . import (
-    mnist,
     kmnist,
     arabic_characters,
     arabic_digits,
     emnist,
-    fashionmnist,
     dsprites,
-    svhn,
-    cifar10,
-    cifar100,
     imagenette,
-    cub200,
     stl10,
-    rock_paper_scissors,
     celeb,
     face_pointing,
     tinyimagenet

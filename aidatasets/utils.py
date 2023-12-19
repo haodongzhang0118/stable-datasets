@@ -3,16 +3,61 @@ from multiprocessing import Pool, Queue, Lock, Process
 from scipy import ndimage
 import os
 import urllib
+import requests
+import functools
+import shutil
 
+import hashlib
 from tqdm import tqdm
 
 import tarfile
 import zipfile
 import pathlib
+from pathlib import Path
 import pandas as pd
 
 import torch as ch
 from typing import Dict, Union
+
+
+class Dataset(dict):
+
+    def __init__(self, path):
+        self._path = Path(path)
+
+    @property
+    def path(self):
+        return self._path
+
+    @property
+    def num_classes(self):
+        raise NotImplementedError("You need to define your own num_clases method")
+
+    @property
+    def name(self):
+        return type(self).__name__
+
+    @property
+    def urls(self):
+        raise NotImplementedError("You need to define your own urls method")
+
+    @property
+    def num_samples(self):
+        raise NotImplementedError("You need to define your own num_samples method")
+
+    def __getitem__(self, key):
+        if key not in self:
+            raise ValueError(f"{key} not present.... did you download/load the dataset first?")
+        return super().__getitem__(key)
+
+
+    def download(self):
+        download_dataset(self.name, self.urls, path=self.path)
+
+    @property
+    def load(self):
+        raise NotImplementedError("You need to define your own load method")
+
 
 
 def as_tuple(x, N, t=None):
@@ -426,17 +471,41 @@ class _DownloadProgressBar(tqdm):
         self.update(b * bsize - self.n)
 
 
-def _download_url(url: str, filename: str):
+def _download_url(url: str, filename: str, md5_checksum : str = None):
     if "drive.google.com" in url:
         import gdown
 
         gdown.download(url, str(filename), quiet=False)
         return
-    short_name = url.split("/")[-1]
-    with _DownloadProgressBar(
-        unit="B", unit_scale=True, miniters=1, desc=short_name
-    ) as t:
-        urllib.request.urlretrieve(url, filename=filename, reporthook=t.update_to)
+
+    target = Path(filename).expanduser().resolve()
+    target.parent.mkdir(parents=True, exist_ok=True)
+
+    if target.is_file():
+        start = target.stat().st_size
+        if md5_checksum:
+            current = hashlib.md5(open(target,'rb').read()).hexdigest()
+            if current == md5_checksum:
+                return
+    else:
+        start = 0
+    resume_header = {'Range': f"bytes={start}-"}
+    r = requests.get(url, headers=resume_header, stream=True,  verify=False, allow_redirects=True)
+    file_size = int(r.headers.get('Content-Length', 0))
+
+    desc = "(Unknown total file size)" if file_size == 0 else ""
+    r.raw.read = functools.partial(r.raw.read, decode_content=True)  # Decompress if needed
+    with tqdm.wrapattr(r.raw, "read", total=file_size, desc=desc) as r_raw:
+        with target.open("wb" if start == 0 else "ab") as f:
+            shutil.copyfileobj(r_raw, f)
+#    with _DownloadProgressBar(
+#        unit="B", unit_scale=True, miniters=1, desc=short_name
+#    ) as t:
+#        urllib.request.urlretrieve(url, filename=filename, reporthook=t.update_to)
+    if md5_checksum is None:
+        current = hashlib.md5(open(target,'rb').read()).hexdigest()
+        print("A md5 checksum was not provided, for future use please use")
+        print(f"{current} for file {target}")
 
 
 def download_dataset(
@@ -457,9 +526,6 @@ def download_dataset(
         common root, then it can be omited from this variable
         and put into the prepend_url argument
 
-    prepend_url: string
-        the common url to prepend onto each url (value) in name_url_mapper mapper
-
     """
     if path is None:
         if "AIDATASET_PATH" in os.environ:
@@ -476,7 +542,7 @@ def download_dataset(
     for filename, url in name_to_url.items():
         file_path = folder / filename
         print("\t...Downloading {}".format(filename))
-        if not file_path.exists():
+        if True:#not file_path.exists():
             _download_url(url, file_path)
         else:
             # we assume that the correct extraction process was done

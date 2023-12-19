@@ -4,26 +4,13 @@ import io
 import os
 import time
 import zipfile
-import matplotlib.image as mpimg
 import urllib
 import numpy as np
-from ..utils import download_dataset
+from ..utils import Dataset
+from PIL import Image
 
 
-__author__ = "Randall Balestriero"
-
-_name = "ibeans"
-
-classes = ["angular_leaf_spot", "bean_rust", "healthy"]
-
-_urls = {
-    "https://storage.googleapis.com/ibeans/train.zip": "train.zip",
-    "https://storage.googleapis.com/ibeans/test.zip": "test.zip",
-    "https://storage.googleapis.com/ibeans/validation.zip": "validation.zip",
-}
-
-
-def load(path=None):
+class IBeans(Dataset):
     """Plant images classification.
 
     This dataset is of leaf images taken in the field in different
@@ -85,50 +72,58 @@ def load(path=None):
         test_labels: array
 
     """
+ 
+    def classes(self):
+        return ["angular_leaf_spot", "bean_rust", "healthy"]
 
-    download_dataset(path, _name, _urls)
+    @property
+    def urls(self):
+        return {
+                "train.zip": "https://storage.googleapis.com/ibeans/train.zip",
+                "test.zip":"https://storage.googleapis.com/ibeans/test.zip",
+                "validation.zip":"https://storage.googleapis.com/ibeans/validation.zip"
+        }
 
-    t0 = time.time()
-
-    # Loading the file
-    train_images = list()
-    train_labels = list()
-    f = zipfile.ZipFile(path + "ibeans/train.zip")
-    for filename in f.namelist():
-        if ".jpg" not in filename:
-            continue
-        train_images.append(mpimg.imread(io.BytesIO(f.read(filename)), "jpg"))
-        train_labels.append(ibeans.classes.index(filename.split("/")[1]))
-
-    # Loading the file
-    test_images = list()
-    test_labels = list()
-    f = zipfile.ZipFile(path + "ibeans/test.zip")
-    for filename in f.namelist():
-        if ".jpg" not in filename:
-            continue
-        test_images.append(mpimg.imread(io.BytesIO(f.read(filename)), "jpg"))
-        test_labels.append(ibeans.classes.index(filename.split("/")[1]))
-
-    # Loading the file
-    valid_images = list()
-    valid_labels = list()
-    f = zipfile.ZipFile(path + "ibeans/validation.zip")
-    for filename in f.namelist():
-        if ".jpg" not in filename:
-            continue
-        valid_images.append(mpimg.imread(io.BytesIO(f.read(filename)), "jpg"))
-        valid_labels.append(ibeans.classes.index(filename.split("/")[1]))
-
-    dataset = {
-        "train_set/images": np.array(train_images),
-        "test_set/images": np.array(test_images),
-        "valid_set/images": np.array(valid_images),
-        "train_set/labels": np.array(train_labels),
-        "test_set/labels": np.array(test_labels),
-        "valid_set/labels": np.array(valid_labels),
-    }
-
-    print("Dataset ibeans loaded in {0:.2f}s.".format(time.time() - t0))
-
-    return dataset
+    
+    def load(self):
+        t0 = time.time()
+    
+        # Loading the file
+        train_images = list()
+        train_labels = list()
+        f = zipfile.ZipFile(path + "ibeans/train.zip")
+        for filename in f.namelist():
+            if ".jpg" not in filename:
+                continue
+            train_images.append(Image.open(io.BytesIO(f.read(filename))))
+            train_labels.append(ibeans.classes.index(filename.split("/")[1]))
+    
+        # Loading the file
+        test_images = list()
+        test_labels = list()
+        f = zipfile.ZipFile(path + "ibeans/test.zip")
+        for filename in f.namelist():
+            if ".jpg" not in filename:
+                continue
+            test_images.append(Image.open(io.BytesIO(f.read(filename))))
+            test_labels.append(ibeans.classes.index(filename.split("/")[1]))
+    
+        # Loading the file
+        valid_images = list()
+        valid_labels = list()
+        f = zipfile.ZipFile(path + "ibeans/validation.zip")
+        for filename in f.namelist():
+            if ".jpg" not in filename:
+                continue
+            valid_images.append(Image.open(io.BytesIO(f.read(filename))))
+            valid_labels.append(ibeans.classes.index(filename.split("/")[1]))
+   
+        self["train_set/images"] =np.array(train_images)
+        self["test_set/images"]= np.array(test_images)
+        self["valid_set/images"]= np.array(valid_images)
+        self["train_set/labels"]= np.array(train_labels)
+        self["test_set/labels"]= np.array(test_labels)
+        self["valid_set/labels"]= np.array(valid_labels)
+    
+        print("Dataset ibeans loaded in {0:.2f}s.".format(time.time() - t0))
+    

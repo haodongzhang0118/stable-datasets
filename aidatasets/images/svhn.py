@@ -1,20 +1,12 @@
 import scipy.io as sio
 import os
-from ..utils import download_dataset
+from ..utils import Dataset
 import numpy as np
 import time
 from pathlib import Path
 
-_name = "svhn"
-_urls = {
-    "train_32x32.mat": "http://ufldl.stanford.edu/housenumbers/train_32x32.mat",
-    "test_32x32.mat": "http://ufldl.stanford.edu/housenumbers/test_32x32.mat",
-}
-SHAPE = (3, 32, 32)
-N_SAMPLES = 73257
 
-
-def load(path=None):
+class SVHN(Dataset):
     """Street number classification.
 
     The `SVHN <http://ufldl.stanford.edu/housenumbers/>`_
@@ -49,29 +41,41 @@ def load(path=None):
 
     """
 
-    download_dataset(_name, _urls, path=path)
 
-    # Load the dataset (download if necessary) and set
-    # the class attributess.
-    print("Loading svhn")
+    @property
+    def urls(self):
+        return {
+    "train_32x32.mat": "http://ufldl.stanford.edu/housenumbers/train_32x32.mat",
+    "test_32x32.mat": "http://ufldl.stanford.edu/housenumbers/test_32x32.mat",
+}
 
-    t0 = time.time()
+    @property
+    def image_shape(self):
+        return (3,32,32)
 
-    # Train set
-    data = sio.loadmat(Path(path) / "svhn/train_32x32.mat")
-    train_images = data["X"].transpose([3, 0, 1, 2])
-    train_labels = np.squeeze(data["y"]) - 1
 
-    # Test set
-    data = sio.loadmat(Path(path) / "svhn/test_32x32.mat")
-    test_images = data["X"].transpose([3, 0, 1, 2])
-    test_labels = np.squeeze(data["y"]) - 1
 
-    print("Dataset svhn loaded in", "{0:.2f}".format(time.time() - t0), "s.")
-
-    dataset = {
-        "train": {"X": np.array(train_images), "y": np.array(train_labels)},
-        "val": {"X": np.array(test_images), "y": np.array(test_labels)},
-    }
-
-    return dataset
+    def load(self):
+    
+        # Load the dataset (download if necessary) and set
+        # the class attributess.
+        print("Loading svhn")
+    
+        t0 = time.time()
+    
+        # Train set
+        data = sio.loadmat(self.path/self.name / "train_32x32.mat")
+        train_images = data["X"].transpose([3, 0, 1, 2])
+        train_labels = np.squeeze(data["y"]) - 1
+    
+        # Test set
+        data = sio.loadmat(self.path / self.name / "test_32x32.mat")
+        test_images = data["X"].transpose([3, 0, 1, 2])
+        test_labels = np.squeeze(data["y"]) - 1
+    
+        print("Dataset svhn loaded in", "{0:.2f}".format(time.time() - t0), "s.")
+        self["train_X"] = np.array(train_images)
+        self["train_y"] = np.array(train_labels)
+        self["test_X"] = np.array(test_images)
+        self["test_y"] = np.array(test_labels)
+    

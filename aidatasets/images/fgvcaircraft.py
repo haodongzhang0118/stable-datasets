@@ -2,14 +2,14 @@ import os
 import pickle
 import tarfile
 import time
-from ..utils import download_dataset, Dataset
+from ..utils import Dataset
 
 import numpy as np
 from tqdm import tqdm
 
 
 
-class CIFAR10(Dataset):
+class FGVCAircraft(Dataset):
     """Image classification.
     The `CIFAR-10 < https: // www.cs.toronto.edu/~kriz/cifar.html >`_ dataset
     was collected by Alex Krizhevsky, Vinod Nair, and Geoffrey
@@ -42,48 +42,29 @@ class CIFAR10(Dataset):
 
     """
 
-    @property
-    def md5(self):
-        return {"cifar-10-python.tar.gz":"c58f30108f718f92721af3b95e74349a"}
 
     @property
     def urls(self):
         return {
-        "cifar-10-python.tar.gz": "https://www.cs.toronto.edu/~kriz/cifar-10-python.tar.gz"
+        "fgvc-aircraft-2013b.tar.gz": "https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/archives/fgvc-aircraft-2013b.tar.gz"
         }
 
     @property
     def num_classes(self):
-        return 10
+        return 102
  
     @property
     def num_samples(self):
-        return 50000
+        return 10200
 
     @property
-    def name(self):
-        return "CIFAR10"
-    
-    @property
-    def label_to_name(self, label):
-        return {
-            0: "airplane",
-            1: "automobile",
-            2: "bird",
-            3: "cat",
-            4: "deer",
-            5: "dog",
-            6: "frog",
-            7: "horse",
-            8: "sheep",
-            9: "truck",
-        }[label]
-
+    def webpage(self):
+        return "https://www.robots.ox.ac.uk/~vgg/data/fgvc-aircraft/"
 
     def load(self):
         t0 = time.time()
     
-        tar = tarfile.open(self.path / self.name / "cifar-10-python.tar.gz", 
+        tar = tarfile.open(self.path / self.name / list(self.urls.keys())[0], 
                 "r:gz")
     
         # Load train set
