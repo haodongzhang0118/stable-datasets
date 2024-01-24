@@ -127,6 +127,10 @@ class CIFAR100(Dataset):
         return {"cifar100.tar.gz": "https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz"}
 
     @property
+    def num_classes(self):
+        return 100
+
+    @property
     def image_shape(self):
         return (3, 32, 32)
     
