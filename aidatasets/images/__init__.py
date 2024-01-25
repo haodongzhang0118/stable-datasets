@@ -15,8 +15,9 @@ from .svhn import SVHN
 from .rock_paper_scissor import RockPaperScissor
 from .tinyimagenet import TinyImagenet, TinyImagenetC
 from .medmnist import MedMNIST
+from .imagenette import Imagenette
 
-#from . import (
+# from . import (
 #    kmnist,
 #    arabic_characters,
 #    arabic_digits,
@@ -26,4 +27,4 @@ from .medmnist import MedMNIST
 #    stl10,
 #    celeb,
 #    face_pointing,
-#)
+# )
