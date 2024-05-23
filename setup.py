@@ -45,7 +45,8 @@ setup(
         "pydub",
         "h5py",
         "soundfile",
-        "pretty_midi"
+        "pretty_midi",
+        "imageio"
     ],
     license="Apache-2.0",
 )

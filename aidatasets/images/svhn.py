@@ -42,6 +42,10 @@ class SVHN(Dataset):
     """
 
     @property
+    def num_classes(self):
+        return 10
+
+    @property
     def urls(self):
         return {
             "train_32x32.mat": "http://ufldl.stanford.edu/housenumbers/train_32x32.mat",

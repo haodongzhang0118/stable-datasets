@@ -21,6 +21,10 @@ class FashionMNIST(Dataset):
     """
 
     @property
+    def num_classes(self):
+        return 10
+
+    @property
     def urls(self):
         return {
             "train-images.gz": "http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/train-images-idx3-ubyte.gz",
