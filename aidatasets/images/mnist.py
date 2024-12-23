@@ -20,15 +20,12 @@ class MNIST(datasets.GeneratorBasedBuilder):
             ),
             supervised_keys=("image", "label"),
             homepage="http://yann.lecun.com/exdb/mnist/",
-            citation="""@article{lecun1998gradient,
-                         title={Gradient-based learning applied to document recognition},
-                         author={LeCun, Yann and others},
-                         journal={Proceedings of the IEEE},
-                         volume={86},
-                         number={11},
-                         pages={2278--2324},
-                         year={1998},
-                         publisher={IEEE}}""",
+            citation="""@misc{lecun1998mnist,
+                          author={Yann LeCun and Corinna Cortes and Christopher J.C. Burges},
+                          title={The MNIST database of handwritten digits},
+                          year={1998},
+                          url={http://yann.lecun.com/exdb/mnist/}
+                        }""",
         )
 
     def _split_generators(self, dl_manager):
