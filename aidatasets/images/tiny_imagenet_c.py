@@ -1,9 +1,5 @@
 import os
-import numpy as np
 import datasets
-import tarfile
-from io import BytesIO
-from PIL import Image
 
 
 class TinyImagenetC(datasets.GeneratorBasedBuilder):
@@ -53,9 +49,9 @@ class TinyImagenetC(datasets.GeneratorBasedBuilder):
                 if file_name.endswith(".JPEG"):
                     full_path = os.path.join(root, file_name)
                     parts = full_path.split(os.sep)
-                    corruption_name = parts[-3]
-                    corruption_level = int(parts[-2])
-                    label = parts[-4]
+                    corruption_name = parts[-4]
+                    corruption_level = int(parts[-3])
+                    label = parts[-2]
 
                     yield full_path, {
                         "image": full_path,
