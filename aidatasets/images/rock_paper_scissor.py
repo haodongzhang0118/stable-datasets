@@ -4,11 +4,13 @@ from PIL import Image
 
 
 class RockPaperScissor(datasets.GeneratorBasedBuilder):
+    """Rock Paper Scissors dataset."""
     VERSION = datasets.Version("1.0.0")
 
     def _info(self):
         return datasets.DatasetInfo(
-            description="Rock Paper Scissor Dataset for image classification.",
+            description="Rock Paper Scissors contains images from various hands, from different races, ages, and "
+                        "genders, posed into Rock / Paper or Scissors and labeled as such.",
             features=datasets.Features(
                 {
                     "image": datasets.Image(),
@@ -16,8 +18,8 @@ class RockPaperScissor(datasets.GeneratorBasedBuilder):
                 }
             ),
             supervised_keys=("image", "label"),
-            homepage="https://storage.googleapis.com/download.tensorflow.org/data/rps.zip",
-            license="Apache License 2.0",
+            homepage="https://laurencemoroney.com/datasets.html",
+            license="CC By 2.0",
         )
 
     def _split_generators(self, dl_manager):
