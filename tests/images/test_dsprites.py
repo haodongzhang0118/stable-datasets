@@ -3,13 +3,24 @@ import numpy as np
 from PIL import Image
 
 
-def test_dsprites_dataset():
+def test_dsprites_dataset(split="train"):
     # Load the DSprites dataset
-    dsprites = datasets.load_dataset("../../aidatasets/images/dsprites.py", split="train", trust_remote_code=True)
+    dsprites = datasets.load_dataset(
+        "../../aidatasets/images/dsprites.py",
+        split=split,
+        trust_remote_code=True
+    )
+
+    # Define the expected number of samples for train/test split
+    if split == "train":
+        expected_num_samples = round(737280 * 0.7)  # 70% of total
+    elif split == "test":
+        expected_num_samples = round(737280 * 0.3)  # 30% of total
+    else:
+        raise ValueError(f"Unknown split: {split}")
 
     # Test 1: Check the expected number of samples
-    expected_num_samples = 737280
-    assert len(dsprites) == expected_num_samples, f"Expected {expected_num_samples} samples, got {len(dsprites)}."
+    assert len(dsprites) == expected_num_samples, f"Expected {expected_num_samples} samples in {split} split, got {len(dsprites)}."
 
     # Test 2: Validate sample keys
     sample = dsprites[0]
@@ -26,7 +37,7 @@ def test_dsprites_dataset():
     # Test 4: Validate "orientation" field
     orientation = sample["orientation"]
     assert isinstance(orientation, float), f"Orientation should be a float, got {type(orientation)}."
-    assert 0.0 <= orientation < 360.0, f"Orientation out of range: {orientation}."
+    assert 0.0 <= orientation <= 2 * np.pi + 1e-5, f"Orientation out of range: {orientation}."
 
     # Test 5: Validate "shape" field
     shape = sample["shape"]
@@ -55,15 +66,18 @@ def test_dsprites_dataset():
     for idx, example in enumerate(dsprites.select(range(100))):  # Test on first 100 samples
         assert set(example.keys()) == expected_keys, f"Sample {idx} missing expected keys."
         assert isinstance(example["image"], Image.Image), f"Sample {idx} has invalid image type."
-        assert 0.0 <= example["orientation"] < 360.0, f"Sample {idx} has invalid orientation."
+        assert 0.0 <= example["orientation"] <= 2 * np.pi + 1e-5, f"Sample {idx} has invalid orientation."
         assert 0 <= example["shape"] <= 2, f"Sample {idx} has invalid shape."
         assert 0.5 <= example["scale"] <= 1.0, f"Sample {idx} has invalid scale."
         assert example["color"] == 0, f"Sample {idx} has invalid color."
         assert 0.0 <= example["position_x"] <= 1.0, f"Sample {idx} has invalid position_x."
         assert 0.0 <= example["position_y"] <= 1.0, f"Sample {idx} has invalid position_y."
 
-    print("All DSprites dataset tests passed successfully!")
+    print(f"All DSprites dataset tests passed successfully for {split} split!")
 
 
 if __name__ == "__main__":
-    test_dsprites_dataset()
+    # Test train split
+    test_dsprites_dataset(split="train")
+    # Test test split
+    test_dsprites_dataset(split="test")
