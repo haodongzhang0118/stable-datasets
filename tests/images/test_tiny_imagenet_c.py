@@ -5,7 +5,7 @@ import numpy as np
 
 def test_tiny_imagenet_c_dataset():
     # Load the Tiny ImageNet-C dataset
-    tiny_imagenet_c = datasets.load_dataset("../../aidatasets/images/tiny_imagenet_c.py", split="test", trust_remote_code=True)
+    tiny_imagenet_c = datasets.load_dataset("../../stable_datasets/images/tiny_imagenet_c.py", split="test", trust_remote_code=True)
 
     # Test 1: Check that each sample has the keys "image", "label", "corruption_name", and "corruption_level"
     sample = tiny_imagenet_c[0]

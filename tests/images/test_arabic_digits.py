@@ -5,7 +5,7 @@ import numpy as np
 
 def test_arabic_digits_dataset():
     # Load the ArabicDigits dataset
-    arabic_digits = datasets.load_dataset("../../aidatasets/images/arabic_digits.py", split="train", trust_remote_code=True)
+    arabic_digits = datasets.load_dataset("../../stable_datasets/images/arabic_digits.py", split="train", trust_remote_code=True)
 
     # Test 1: Check the number of samples in the training set
     expected_num_train_samples = 60000
@@ -32,7 +32,7 @@ def test_arabic_digits_dataset():
     assert 0 <= label < 10, f"Label should be between 0 and 9, got {label}."
 
     # Test 5: Check the test set for expected number of samples
-    arabic_digits_test = datasets.load_dataset("../../aidatasets/images/arabic_digits.py", split="test", trust_remote_code=True)
+    arabic_digits_test = datasets.load_dataset("../../stable_datasets/images/arabic_digits.py", split="test", trust_remote_code=True)
     expected_num_test_samples = 10000
     assert len(
         arabic_digits_test) == expected_num_test_samples, f"Expected {expected_num_test_samples} test samples, got {len(arabic_digits_test)}."

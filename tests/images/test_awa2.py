@@ -5,7 +5,7 @@ import numpy as np
 
 def test_awa2_dataset():
     # Load the AWA2 dataset
-    awa2 = datasets.load_dataset("../../aidatasets/images/awa2.py", split="test", trust_remote_code=True)
+    awa2 = datasets.load_dataset("../../stable_datasets/images/awa2.py", split="test", trust_remote_code=True)
 
     # Test 1: Check that the dataset has 37,322 samples
     assert len(awa2) == 37322, f"Expected 37,322 samples, got {len(awa2)}."

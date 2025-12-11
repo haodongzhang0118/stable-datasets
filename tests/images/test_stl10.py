@@ -5,9 +5,9 @@ import numpy as np
 
 def test_stl10_dataset():
     # Load STL-10 dataset
-    stl10_train = datasets.load_dataset("../../aidatasets/images/stl10.py", split="train", trust_remote_code=True)
-    stl10_test = datasets.load_dataset("../../aidatasets/images/stl10.py", split="test", trust_remote_code=True)
-    stl10_unlabeled = datasets.load_dataset("../../aidatasets/images/stl10.py", split="unlabeled", trust_remote_code=True)
+    stl10_train = datasets.load_dataset("../../stable_datasets/images/stl10.py", split="train", trust_remote_code=True)
+    stl10_test = datasets.load_dataset("../../stable_datasets/images/stl10.py", split="test", trust_remote_code=True)
+    stl10_unlabeled = datasets.load_dataset("../../stable_datasets/images/stl10.py", split="unlabeled", trust_remote_code=True)
 
     # Test 1: Check the number of samples
     assert len(stl10_train) == 5000, f"Expected 5000 training samples, got {len(stl10_train)}."

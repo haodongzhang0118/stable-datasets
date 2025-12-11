@@ -5,7 +5,7 @@ import numpy as np
 
 def test_svhn_dataset():
     # Load the SVHN dataset
-    svhn_train = datasets.load_dataset("../../aidatasets/images/svhn.py", split="train", trust_remote_code=True)
+    svhn_train = datasets.load_dataset("../../stable_datasets/images/svhn.py", split="train", trust_remote_code=True)
 
     # Test 1: Check that the training dataset is non-empty
     assert len(svhn_train) > 0, "The training dataset should not be empty."
@@ -27,7 +27,7 @@ def test_svhn_dataset():
     assert 0 <= label < 10, f"Label should be between 0 and 9, got {label}."
 
     # Test 5: Verify the test dataset is non-empty
-    svhn_test = datasets.load_dataset("../../aidatasets/images/svhn.py", split="test", trust_remote_code=True)
+    svhn_test = datasets.load_dataset("../../stable_datasets/images/svhn.py", split="test", trust_remote_code=True)
     assert len(svhn_test) > 0, "The test dataset should not be empty."
 
     print("All tests passed successfully!")

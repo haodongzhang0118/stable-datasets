@@ -5,9 +5,9 @@ import numpy as np
 
 def test_celeb_a_dataset():
     # Load the dataset with trust_remote_code to allow loading from the custom script path
-    celebA_train = datasets.load_dataset("../../aidatasets/images/celeb_a.py", split="train", trust_remote_code=True)
-    celebA_valid = datasets.load_dataset("../../aidatasets/images/celeb_a.py", split="validation", trust_remote_code=True)
-    celebA_test = datasets.load_dataset("../../aidatasets/images/celeb_a.py", split="test", trust_remote_code=True)
+    celebA_train = datasets.load_dataset("../../stable_datasets/images/celeb_a.py", split="train", trust_remote_code=True)
+    celebA_valid = datasets.load_dataset("../../stable_datasets/images/celeb_a.py", split="validation", trust_remote_code=True)
+    celebA_test = datasets.load_dataset("../../stable_datasets/images/celeb_a.py", split="test", trust_remote_code=True)
 
     # Test 1: Check that each split has a non-zero number of samples
     assert len(celebA_train) > 0, f"Expected non-zero samples in training set, but got {len(celebA_train)}."

@@ -5,7 +5,7 @@ import numpy as np
 
 def test_flowers102_dataset():
     # Load the Flowers102 dataset
-    flowers102 = datasets.load_dataset("../../aidatasets/images/flowers102.py", split="train", trust_remote_code=True)
+    flowers102 = datasets.load_dataset("../../stable_datasets/images/flowers102.py", split="train", trust_remote_code=True)
 
     # Test 1: Check the number of samples in each split
     assert len(flowers102) > 0, "The training set should not be empty."
@@ -29,10 +29,10 @@ def test_flowers102_dataset():
     assert 0 <= label < 102, f"Label should be in range [0, 101], got {label}."
 
     # Test additional splits (e.g., validation and test)
-    flowers102_val = datasets.load_dataset("../../aidatasets/images/flowers102.py", split="validation", trust_remote_code=True)
+    flowers102_val = datasets.load_dataset("../../stable_datasets/images/flowers102.py", split="validation", trust_remote_code=True)
     assert len(flowers102_val) > 0, "The validation set should not be empty."
 
-    flowers102_test = datasets.load_dataset("../../aidatasets/images/flowers102.py", split="test", trust_remote_code=True)
+    flowers102_test = datasets.load_dataset("../../stable_datasets/images/flowers102.py", split="test", trust_remote_code=True)
     assert len(flowers102_test) > 0, "The test set should not be empty."
 
     print("All tests passed successfully!")

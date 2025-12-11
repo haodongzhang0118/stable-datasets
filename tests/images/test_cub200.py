@@ -5,8 +5,8 @@ import numpy as np
 
 def test_cub200_dataset():
     # Load the CUB200 dataset for the training split
-    cub200_train = datasets.load_dataset("../../aidatasets/images/cub200.py", split="train", trust_remote_code=True)
-    cub200_test = datasets.load_dataset("../../aidatasets/images/cub200.py", split="test", trust_remote_code=True)
+    cub200_train = datasets.load_dataset("../../stable_datasets/images/cub200.py", split="train", trust_remote_code=True)
+    cub200_test = datasets.load_dataset("../../stable_datasets/images/cub200.py", split="test", trust_remote_code=True)
 
     # Expected number of samples in each split
     expected_num_train_samples = 5994

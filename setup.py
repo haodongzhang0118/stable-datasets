@@ -22,7 +22,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="aidatasets",
+    name="stable_datasets",
     version=versioneer.get_version(),
     cmdclass=versioneer.get_cmdclass(),
     author="Randall Balestriero",

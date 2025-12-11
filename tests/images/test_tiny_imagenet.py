@@ -5,7 +5,7 @@ import numpy as np
 
 def test_tiny_imagenet_dataset():
     # Load the Tiny ImageNet dataset
-    dataset = datasets.load_dataset("../../aidatasets/images/tiny_imagenet.py", split="train", trust_remote_code=True)
+    dataset = datasets.load_dataset("../../stable_datasets/images/tiny_imagenet.py", split="train", trust_remote_code=True)
 
     # Test 1: Check the number of samples in the train split
     assert len(dataset) > 0, "The training dataset should not be empty."
@@ -28,7 +28,7 @@ def test_tiny_imagenet_dataset():
     assert 0 <= label < 200, f"Label should be between 0 and 199, got {label}."
 
     # Test 5: Check the validation split
-    val_dataset = datasets.load_dataset("../../aidatasets/images/tiny_imagenet.py", split="validation", trust_remote_code=True)
+    val_dataset = datasets.load_dataset("../../stable_datasets/images/tiny_imagenet.py", split="validation", trust_remote_code=True)
     assert len(val_dataset) > 0, "The validation dataset should not be empty."
 
     print("All tests passed successfully!")

@@ -5,7 +5,7 @@ import numpy as np
 
 def test_cifar100_dataset():
     # Load the CIFAR-100 dataset
-    cifar100 = datasets.load_dataset("../../aidatasets/images/cifar100.py", split="train", trust_remote_code=True)
+    cifar100 = datasets.load_dataset("../../stable_datasets/images/cifar100.py", split="train", trust_remote_code=True)
 
     # Test 1: Check that the dataset has 50,000 training samples and 10,000 test samples
     assert len(cifar100) == 50000, f"Expected 50000 training samples, got {len(cifar100)}."
@@ -35,7 +35,7 @@ def test_cifar100_dataset():
     assert 0 <= superclass <= 19, f"Superclass should be between 0 and 19, got {superclass}."
 
     # Test 6: Check that test split has 10,000 samples
-    cifar100_test = datasets.load_dataset("../../aidatasets/images/cifar100.py", split="test", trust_remote_code=True)
+    cifar100_test = datasets.load_dataset("../../stable_datasets/images/cifar100.py", split="test", trust_remote_code=True)
     assert len(cifar100_test) == 10000, f"Expected 10000 test samples, got {len(cifar100_test)}."
 
     print("All CIFAR-100 tests passed successfully!")

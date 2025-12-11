@@ -6,7 +6,7 @@ import numpy as np
 
 def test_imagenet_dataset():
     # Test for default config (imagenette)
-    imagenette = datasets.load_dataset("../../aidatasets/images/imagenette.py", split="train", trust_remote_code=True)
+    imagenette = datasets.load_dataset("../../stable_datasets/images/imagenette.py", split="train", trust_remote_code=True)
 
     # Test 1: Check dataset length
     assert len(imagenette) > 0, "Expected non-zero samples in train split."
@@ -28,7 +28,7 @@ def test_imagenet_dataset():
     assert label in valid_labels, f"Label {label} is not in the valid range {valid_labels}."
 
     # Test 5: Validate the test split
-    imagenette_test = datasets.load_dataset("../../aidatasets/images/imagenette.py", split="test", trust_remote_code=True)
+    imagenette_test = datasets.load_dataset("../../stable_datasets/images/imagenette.py", split="test", trust_remote_code=True)
     assert len(imagenette_test) > 0, "Expected non-zero samples in test split."
 
     print("All tests passed for Imagenet dataset!")

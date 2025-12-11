@@ -5,8 +5,8 @@ import numpy as np
 
 def test_hasyv2_dataset():
     # Load the HASYv2 dataset
-    hasyv2_train = datasets.load_dataset("../../aidatasets/images/hasy_v2.py", split="train", trust_remote_code=True)
-    hasyv2_test = datasets.load_dataset("../../aidatasets/images/hasy_v2.py", split="test", trust_remote_code=True)
+    hasyv2_train = datasets.load_dataset("../../stable_datasets/images/hasy_v2.py", split="train", trust_remote_code=True)
+    hasyv2_test = datasets.load_dataset("../../stable_datasets/images/hasy_v2.py", split="test", trust_remote_code=True)
 
     # Test 1: Validate dataset length
     assert len(hasyv2_train) == 151241, f"Expected 151241 samples in train dataset, got {len(hasyv2_train)}."

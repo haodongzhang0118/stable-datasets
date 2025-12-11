@@ -4,7 +4,7 @@ from PIL import Image
 
 def test_k_mnist_dataset():
     # Load the KMNIST dataset
-    kmnist = datasets.load_dataset("../../aidatasets/images/k_mnist.py", name="kmnist", split="train", trust_remote_code=True)
+    kmnist = datasets.load_dataset("../../stable_datasets/images/k_mnist.py", name="kmnist", split="train", trust_remote_code=True)
 
     # Test 1: Check dataset size
     assert len(kmnist) == 60000, f"Expected 60000 training samples, got {len(kmnist)}."
@@ -24,7 +24,7 @@ def test_k_mnist_dataset():
     assert 0 <= sample["label"] < 10, f"Label should be in range [0, 9], got {sample['label']}."
 
     # Test 5: Validate test split size
-    kmnist_test = datasets.load_dataset("../../aidatasets/images/k_mnist.py", name="kmnist", split="test", trust_remote_code=True)
+    kmnist_test = datasets.load_dataset("../../stable_datasets/images/k_mnist.py", name="kmnist", split="test", trust_remote_code=True)
     assert len(kmnist_test) == 10000, f"Expected 10000 test samples, got {len(kmnist_test)}."
 
     print("All tests passed successfully!")

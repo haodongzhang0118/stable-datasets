@@ -5,7 +5,7 @@ import numpy as np
 
 def test_rock_paper_scissor_dataset():
     # Load the train dataset
-    rps_train = datasets.load_dataset("../../aidatasets/images/rock_paper_scissor.py", split="train", trust_remote_code=True)
+    rps_train = datasets.load_dataset("../../stable_datasets/images/rock_paper_scissor.py", split="train", trust_remote_code=True)
 
     # Test 1: Check train dataset size
     assert len(rps_train) > 0, "Train dataset should not be empty."
@@ -26,7 +26,7 @@ def test_rock_paper_scissor_dataset():
     assert 0 <= label_train <= 2, f"Label should be between 0 and 2, got {label_train}."
 
     # Load the test dataset
-    rps_test = datasets.load_dataset("../../aidatasets/images/rock_paper_scissor.py", split="test", trust_remote_code=True)
+    rps_test = datasets.load_dataset("../../stable_datasets/images/rock_paper_scissor.py", split="test", trust_remote_code=True)
 
     # Test 5: Check test dataset size
     assert len(rps_test) > 0, "Test dataset should not be empty."

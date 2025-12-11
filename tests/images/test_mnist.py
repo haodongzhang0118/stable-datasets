@@ -5,7 +5,7 @@ import numpy as np
 
 def test_mnist_dataset():
     # Load the MNIST dataset
-    mnist_train = datasets.load_dataset("../../aidatasets/images/mnist.py", split="train", trust_remote_code=True)
+    mnist_train = datasets.load_dataset("../../stable_datasets/images/mnist.py", split="train", trust_remote_code=True)
 
     # Test 1: Check training sample count
     assert len(mnist_train) == 60000, f"Expected 60000 training samples, got {len(mnist_train)}."
@@ -27,7 +27,7 @@ def test_mnist_dataset():
     assert 0 <= label < 10, f"Label should be between 0 and 9, got {label}."
 
     # Test 5: Validate test set sample count
-    mnist_test = datasets.load_dataset("../../aidatasets/images/mnist.py", split="test", trust_remote_code=True)
+    mnist_test = datasets.load_dataset("../../stable_datasets/images/mnist.py", split="test", trust_remote_code=True)
     assert len(mnist_test) == 10000, f"Expected 10000 test samples, got {len(mnist_test)}."
 
     print("All MNIST tests passed successfully!")

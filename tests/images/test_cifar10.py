@@ -5,7 +5,7 @@ import numpy as np
 
 def test_cifar10_dataset():
     # Load the CIFAR-10 dataset
-    cifar10 = datasets.load_dataset("../../aidatasets/images/cifar10.py", split="train", trust_remote_code=True)
+    cifar10 = datasets.load_dataset("../../stable_datasets/images/cifar10.py", split="train", trust_remote_code=True)
 
     # Test 1: Check that the dataset has 50,000 training samples and 10,000 test samples
     assert len(cifar10) == 50000, f"Expected 50000 training samples, got {len(cifar10)}."
@@ -29,7 +29,7 @@ def test_cifar10_dataset():
     assert 0 <= label <= 9, f"Label should be between 0 and 9, got {label}."
 
     # Test 5: Check that test split has 10,000 samples
-    cifar10_test = datasets.load_dataset("../../aidatasets/images/cifar10.py", split="test", trust_remote_code=True)
+    cifar10_test = datasets.load_dataset("../../stable_datasets/images/cifar10.py", split="test", trust_remote_code=True)
     assert len(cifar10_test) == 10000, f"Expected 10000 test samples, got {len(cifar10_test)}."
 
     print("All tests passed successfully!")

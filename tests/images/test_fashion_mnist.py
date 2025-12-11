@@ -5,7 +5,7 @@ import numpy as np
 
 def test_fashion_mnist():
     # Load the FashionMNIST dataset
-    fashion_mnist = datasets.load_dataset("../../aidatasets/images/fashion_mnist.py", split="train", trust_remote_code=True)
+    fashion_mnist = datasets.load_dataset("../../stable_datasets/images/fashion_mnist.py", split="train", trust_remote_code=True)
 
     # Test 1: Check dataset length
     assert len(fashion_mnist) == 60000, f"Expected 60000 training samples, got {len(fashion_mnist)}."
@@ -27,7 +27,7 @@ def test_fashion_mnist():
     assert 0 <= label < 10, f"Label should be between 0 and 9, got {label}."
 
     # Test 5: Check test split
-    fashion_mnist_test = datasets.load_dataset("../../aidatasets/images/fashion_mnist.py", split="test", trust_remote_code=True)
+    fashion_mnist_test = datasets.load_dataset("../../stable_datasets/images/fashion_mnist.py", split="test", trust_remote_code=True)
     assert len(fashion_mnist_test) == 10000, f"Expected 10000 test samples, got {len(fashion_mnist_test)}."
 
     print("All tests passed successfully!")

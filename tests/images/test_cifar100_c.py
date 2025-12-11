@@ -6,7 +6,7 @@ from stable_datasets.images.cifar100_c import CIFAR100C
 
 def test_cifar100_c_dataset():
     # Load the CIFAR-100-C dataset
-    cifar100c = datasets.load_dataset("../../aidatasets/images/cifar100_c.py", split="test", trust_remote_code=True)
+    cifar100c = datasets.load_dataset("../../stable_datasets/images/cifar100_c.py", split="test", trust_remote_code=True)
 
     # Test 1: Check that the dataset has the correct number of samples
     # CIFAR-100-C typically contains 10,000 images per corruption type, with 5 levels each.

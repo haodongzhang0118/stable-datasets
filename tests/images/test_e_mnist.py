@@ -10,7 +10,7 @@ def test_e_mnist_dataset():
     variant = "balanced"
 
     # Load the EMNIST dataset (train split)
-    emnist_train = datasets.load_dataset("../../aidatasets/images/e_mnist.py", variant, split="train", trust_remote_code=True)
+    emnist_train = datasets.load_dataset("../../stable_datasets/images/e_mnist.py", variant, split="train", trust_remote_code=True)
 
     # Test 1: Check that the dataset has the expected number of training samples
     # For EMNIST Balanced: expected training size ~112,800
@@ -42,7 +42,7 @@ def test_e_mnist_dataset():
 
     # Test 5: Check the test split size
     # EMNIST Balanced test set should have ~18,800 samples
-    emnist_test = datasets.load_dataset("../../aidatasets/images/e_mnist.py", variant, split="test")
+    emnist_test = datasets.load_dataset("../../stable_datasets/images/e_mnist.py", variant, split="test")
     expected_test_size = 18800
     assert len(emnist_test) == expected_test_size, (
         f"Expected {expected_test_size} test samples for {variant}, got {len(emnist_test)}."

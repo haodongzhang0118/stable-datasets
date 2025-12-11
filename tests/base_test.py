@@ -1,82 +1,82 @@
 # def test_import():
-#     import aidatasets
+#     import stable_datasets
 #
 # def test_CIFAR10():
-#     import aidatasets
-#     a = aidatasets.images.CIFAR10("../Downloads")
+#     import stable_datasets
+#     a = stable_datasets.images.CIFAR10("../Downloads")
 #     a.download()
 #     a.load()
 #
 #
 # def test_CIFAR100():
-#     import aidatasets
-#     a = aidatasets.images.CIFAR100("../Downloads")
+#     import stable_datasets
+#     a = stable_datasets.images.CIFAR100("../Downloads")
 #     a.download()
 #     a.load()
 #
 #
 # def test_Flowers102():
-#     import aidatasets
-#     a = aidatasets.images.Flowers102("../Downloads")
+#     import stable_datasets
+#     a = stable_datasets.images.Flowers102("../Downloads")
 #     a.download()
 #     a.load()
 #
 # def test_Food101():
-#     import aidatasets
-#     a = aidatasets.images.Food101("../Downloads")
+#     import stable_datasets
+#     a = stable_datasets.images.Food101("../Downloads")
 #     a.download()
 #     a.load()
 #
 # def test_FGVCAircraft():
-#     import aidatasets
-#     a = aidatasets.images.FGVCAircraft("../Downloads")
+#     import stable_datasets
+#     a = stable_datasets.images.FGVCAircraft("../Downloads")
 #     a.download()
 #     a.load()
 #
 #
 # def test_IBeans():
-#     import aidatasets
-#     a = aidatasets.images.Beans("../Downloads")
+#     import stable_datasets
+#     a = stable_datasets.images.Beans("../Downloads")
 #     a.download()
 #     a.load()
 #
 #
 # def test_Country211():
-#     import aidatasets
-#     a = aidatasets.images.Country211("../Downloads")
+#     import stable_datasets
+#     a = stable_datasets.images.Country211("../Downloads")
 #     a.download()
 #     a.load()
 #
 #
 # def test_MNIST():
-#     import aidatasets
-#     a = aidatasets.images.MNIST("../Downloads")
+#     import stable_datasets
+#     a = stable_datasets.images.MNIST("../Downloads")
 #     a.download()
 #     a.load()
 #
 #
 # def test_FashionMNIST():
-#     import aidatasets
-#     a = aidatasets.images.FashionMNIST("../Downloads")
+#     import stable_datasets
+#     a = stable_datasets.images.FashionMNIST("../Downloads")
 #     a.download()
 #     a.load()
 #
 #
 # def test_CUB200():
-#     import aidatasets
-#     a = aidatasets.images.CUB200("../Downloads")
+#     import stable_datasets
+#     a = stable_datasets.images.CUB200("../Downloads")
 #     a.download()
 #     a.load()
 #
 # def test_SVHN():
-#     import aidatasets
-#     a = aidatasets.images.SVHN("../Downloads")
+#     import stable_datasets
+#     a = stable_datasets.images.SVHN("../Downloads")
 #     a.download()
 #     a.load()
 #
 # def test_RockPaperScissors():
-#     import aidatasets
-#     a = aidatasets.images.RockPaperScissors("../Downloads")
+#     import stable_datasets
+#     a = stable_datasets.images.RockPaperScissors("../Downloads")
 #     a.download()
 #     a.load()
 #
@@ -87,7 +87,7 @@
 #     parser.add_argument("--path", type=str)
 #     args = parser.parse_args()
 #
-#     import aidatasets
-#     a = aidatasets.images.__dict__[args.name](args.path)
+#     import stable_datasets
+#     a = stable_datasets.images.__dict__[args.name](args.path)
 #     a.download()
 #     a.load()

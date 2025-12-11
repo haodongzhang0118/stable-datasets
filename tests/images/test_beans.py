@@ -5,9 +5,9 @@ import numpy as np
 
 def test_beans_dataset():
     # Load the IBeans dataset
-    ibeans_train = datasets.load_dataset("../../aidatasets/images/beans.py", split="train", trust_remote_code=True)
-    ibeans_test = datasets.load_dataset("../../aidatasets/images/beans.py", split="test", trust_remote_code=True)
-    ibeans_valid = datasets.load_dataset("../../aidatasets/images/beans.py", split="validation", trust_remote_code=True)
+    ibeans_train = datasets.load_dataset("../../stable_datasets/images/beans.py", split="train", trust_remote_code=True)
+    ibeans_test = datasets.load_dataset("../../stable_datasets/images/beans.py", split="test", trust_remote_code=True)
+    ibeans_valid = datasets.load_dataset("../../stable_datasets/images/beans.py", split="validation", trust_remote_code=True)
 
     # Test 1: Check dataset split sizes
     assert len(ibeans_train) > 0, "Training dataset is empty."

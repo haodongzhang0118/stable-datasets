@@ -5,8 +5,8 @@ import numpy as np
 
 def test_linnaeus5_dataset():
     # Load the Linnaeus5 dataset
-    linnaeus5_train = datasets.load_dataset("../../aidatasets/images/linnaeus5.py", split="train", trust_remote_code=True)
-    linnaeus5_test = datasets.load_dataset("../../aidatasets/images/linnaeus5.py", split="test", trust_remote_code=True)
+    linnaeus5_train = datasets.load_dataset("../../stable_datasets/images/linnaeus5.py", split="train", trust_remote_code=True)
+    linnaeus5_test = datasets.load_dataset("../../stable_datasets/images/linnaeus5.py", split="test", trust_remote_code=True)
 
     # Test 1: Check number of samples in train and test splits
     assert len(linnaeus5_train) == 6000, f"Expected 6000 training samples, got {len(linnaeus5_train)}."

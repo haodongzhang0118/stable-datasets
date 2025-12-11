@@ -4,7 +4,7 @@ from PIL import Image
 
 def test_dtd_dataset():
     # Load the DTD dataset
-    dtd = datasets.load_dataset("../../aidatasets/images/dtd.py", split="train", trust_remote_code=True)
+    dtd = datasets.load_dataset("../../stable_datasets/images/dtd.py", split="train", trust_remote_code=True)
 
     # Test 1: Validate dataset size
     expected_test_size = 1880

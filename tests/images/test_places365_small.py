@@ -5,8 +5,8 @@ import numpy as np
 
 def test_places365_small_dataset():
     # Load the Places365Small dataset
-    places365_train = datasets.load_dataset("../../aidatasets/images/places365_small.py", split="train", trust_remote_code=True)
-    places365_val = datasets.load_dataset("../../aidatasets/images/places365_small.py", split="validation", trust_remote_code=True)
+    places365_train = datasets.load_dataset("../../stable_datasets/images/places365_small.py", split="train", trust_remote_code=True)
+    places365_val = datasets.load_dataset("../../stable_datasets/images/places365_small.py", split="validation", trust_remote_code=True)
 
     # Test 1: Check that the train dataset is not empty
     assert len(places365_train) > 0, "Train dataset should not be empty."

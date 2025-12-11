@@ -5,11 +5,11 @@ import numpy as np
 
 def test_country211_dataset():
     # Load the dataset for each split with trust_remote_code enabled
-    country211_train = datasets.load_dataset("../../aidatasets/images/country211.py", split="train",
+    country211_train = datasets.load_dataset("../../stable_datasets/images/country211.py", split="train",
                                              trust_remote_code=True)
-    country211_valid = datasets.load_dataset("../../aidatasets/images/country211.py", split="validation",
+    country211_valid = datasets.load_dataset("../../stable_datasets/images/country211.py", split="validation",
                                              trust_remote_code=True)
-    country211_test = datasets.load_dataset("../../aidatasets/images/country211.py", split="test",
+    country211_test = datasets.load_dataset("../../stable_datasets/images/country211.py", split="test",
                                             trust_remote_code=True)
 
     # Expected number of classes for Country211

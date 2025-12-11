@@ -13,7 +13,7 @@ def test_med_mnist_dataset():
         print(f"Testing {variant}...")
 
         # Load the dataset for training split
-        dataset = datasets.load_dataset("../../aidatasets/images/med_mnist.py", name=variant, split="train", trust_remote_code=True)
+        dataset = datasets.load_dataset("../../stable_datasets/images/med_mnist.py", name=variant, split="train", trust_remote_code=True)
 
         # Test 1: Check dataset length
         assert len(dataset) > 0, f"{variant} training dataset should not be empty."
@@ -46,9 +46,9 @@ def test_med_mnist_dataset():
             assert isinstance(label, int), f"{variant}: 'label' should be an integer, got {type(label)}."
 
         # Validate dataset splits (val/test)
-        dataset_val = datasets.load_dataset("../../aidatasets/images/med_mnist.py", name=variant, split="validation", trust_remote_code=True)
+        dataset_val = datasets.load_dataset("../../stable_datasets/images/med_mnist.py", name=variant, split="validation", trust_remote_code=True)
         assert len(dataset_val) > 0, f"{variant} val dataset should not be empty."
-        dataset_test = datasets.load_dataset("../../aidatasets/images/med_mnist.py", name=variant, split="test", trust_remote_code=True)
+        dataset_test = datasets.load_dataset("../../stable_datasets/images/med_mnist.py", name=variant, split="test", trust_remote_code=True)
         assert len(dataset_test) > 0, f"{variant} test dataset should not be empty."
 
         print(f"{variant} tests passed successfully!\n")

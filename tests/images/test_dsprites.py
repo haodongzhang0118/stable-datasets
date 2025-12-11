@@ -6,7 +6,7 @@ from PIL import Image
 def test_dsprites_dataset(split="train"):
     # Load the DSprites dataset
     dsprites = datasets.load_dataset(
-        "../../aidatasets/images/dsprites.py",
+        "../../stable_datasets/images/dsprites.py",
         split=split,
         trust_remote_code=True
     )

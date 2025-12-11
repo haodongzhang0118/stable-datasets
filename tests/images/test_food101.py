@@ -5,8 +5,8 @@ import numpy as np
 
 def test_food101_dataset():
     # Load the Food101 dataset
-    food101_train = datasets.load_dataset("../../aidatasets/images/food101.py", split="train", trust_remote_code=True)
-    food101_test = datasets.load_dataset("../../aidatasets/images/food101.py", split="test", trust_remote_code=True)
+    food101_train = datasets.load_dataset("../../stable_datasets/images/food101.py", split="train", trust_remote_code=True)
+    food101_test = datasets.load_dataset("../../stable_datasets/images/food101.py", split="test", trust_remote_code=True)
 
     # Test 1: Check the number of samples in the train and test splits
     assert len(food101_train) == 75750, f"Expected 75750 training samples, got {len(food101_train)}."

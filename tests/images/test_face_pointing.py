@@ -5,7 +5,7 @@ import numpy as np
 
 def test_face_pointing_dataset():
     # Load the Face Pointing dataset
-    dataset = datasets.load_dataset("../../aidatasets/images/face_pointing.py", split="train", trust_remote_code=True)
+    dataset = datasets.load_dataset("../../stable_datasets/images/face_pointing.py", split="train", trust_remote_code=True)
 
     # Test 1: Check dataset size
     assert len(dataset) > 0, f"Dataset should have samples, but found {len(dataset)}."
