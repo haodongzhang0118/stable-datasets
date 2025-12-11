@@ -16,6 +16,12 @@ dependencies = [
     "loguru",
     "datasets",
     "tqdm",
+    "pillow",
+    "gdown",
+    "scikit-learn",
+    "rarfile",
+    "torch",
+    "h5py",
 ]
 
 dynamic = ["version"]
@@ -52,7 +58,7 @@ docs = [
 ]
 
 all = [
-    
+
 ]
 
 # =======================
