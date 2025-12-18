@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 
 from .arabic_characters import ArabicCharacters
+from .cifar10 import CIFAR10
+from .cifar100 import CIFAR100
 from .cars196 import Cars196
 from .dtd import DTD
 from .med_mnist import MedMNIST
@@ -42,6 +44,8 @@ from .med_mnist import MedMNIST
 
 __all__ = [
     "ArabicCharacters",
+    "CIFAR10",
+    "CIFAR100",
     "CIFAR10C",
     "CIFAR100C",
     "MedMNIST",
