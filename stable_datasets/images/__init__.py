@@ -14,11 +14,12 @@ from .cifar100 import CIFAR100
 
 # from .cifar100 import CIFAR100
 from .cifar100_c import CIFAR100C
+from .clevrer import CLEVRER
+from .dtd import DTD
 from .dtd import DTD
 from .fashion_mnist import FashionMNIST
 from .k_mnist import KMNIST
 from .med_mnist import MedMNIST
-
 
 # from .country211 import Country211
 # from .cub200 import CUB200
@@ -33,7 +34,9 @@ from .med_mnist import MedMNIST
 # from .imagenette import Imagenette
 # from .linnaeus5 import Linnaeus5
 # from .mnist import MNIST
-# from .not_mnist import NotMNIST
+from .not_mnist import NotMNIST
+
+
 # from .places365_small import Places365Small
 # from .rock_paper_scissor import RockPaperScissor
 # from .stl10 import STL10
@@ -47,9 +50,11 @@ __all__ = [
     "CIFAR100",
     "CIFAR10C",
     "CIFAR100C",
+    "CLEVRER",
     "FashionMNIST",
     "KMNIST",
     "MedMNIST",
     "Cars196",
     "DTD",
+    "NotMNIST",
 ]
