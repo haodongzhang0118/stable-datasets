@@ -24,6 +24,7 @@ from .dsprites_noise import DSpritesNoise
 from .dsprites_scream import DSpritesScream
 from .dtd import DTD
 from .fashion_mnist import FashionMNIST
+from .flowers102 import Flowers102
 from .k_mnist import KMNIST
 from .med_mnist import MedMNIST
 
@@ -31,7 +32,6 @@ from .med_mnist import MedMNIST
 # from .e_mnist import EMNIST
 # from .fashion_mnist import FashionMNIST
 # from .fgvc_aircraft import FGVCAircraft
-# from .flowers102 import Flowers102
 # from .food101 import Food101
 # from .hasy_v2 import HASYv2
 # from .imagenette import Imagenette
@@ -65,5 +65,6 @@ __all__ = [
     "KMNIST",
     "MedMNIST",
     "NotMNIST",
+    "Flowers102",
     "SVHN",
 ]
