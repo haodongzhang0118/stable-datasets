@@ -58,6 +58,8 @@ Available Datasets
    awa2
    beans
    stl10
+   tiny_imagenet
+   tiny_imagenet_c
    e_mnist
    flowers102
    cub200
