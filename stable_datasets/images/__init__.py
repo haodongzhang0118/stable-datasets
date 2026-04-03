@@ -14,9 +14,6 @@ from .clevrer import CLEVRER
 from .country211 import Country211
 from .cub200 import CUB200
 from .dsprites import DSprites
-from .dsprites_color import DSpritesColor
-from .dsprites_noise import DSpritesNoise
-from .dsprites_scream import DSpritesScream
 from .dtd import DTD
 from .e_mnist import EMNIST
 from .face_pointing import FacePointing
@@ -60,9 +57,6 @@ __all__ = [
     "Country211",
     "CUB200",
     "DSprites",
-    "DSpritesColor",
-    "DSpritesNoise",
-    "DSpritesScream",
     "DTD",
     "EMNIST",
     "FacePointing",
