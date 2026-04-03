@@ -11,7 +11,7 @@ class Shapes3D(BaseDatasetBuilder):
     VERSION = datasets.Version("1.0.0")
 
     SOURCE = {
-        "homepage": "https://github.com/google-deepmind/3dshapes-dataset/",
+        "homepage": "https://github.com/google-deepmind/3d-shapes",
         "assets": {
             "train": "https://huggingface.co/datasets/randall-lab/shapes3d/resolve/main/shapes3d.npz",
         },
