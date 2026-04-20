@@ -30,6 +30,7 @@ from .linnaeus5 import Linnaeus5
 from .med_mnist import MedMNIST
 from .not_mnist import NotMNIST
 from .oxford_pet import OxfordPet
+from .plant_village import PlantVillage
 
 # from .imagenette import Imagenette
 # from .mnist import MNIST
@@ -74,6 +75,7 @@ __all__ = [
     "MedMNIST",
     "NotMNIST",
     "OxfordPet",
+    "PlantVillage",
     "RockPaperScissor",
     "Shapes3D",
     "SmallNORB",
