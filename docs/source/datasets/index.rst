@@ -53,6 +53,7 @@ Available Datasets
    cars196
    oxford_pet
    plant_village
+   eurosat
    dtd
    fashion_mnist
    k_mnist

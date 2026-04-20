@@ -16,6 +16,7 @@ from .cub200 import CUB200
 from .dsprites import DSprites
 from .dtd import DTD
 from .e_mnist import EMNIST
+from .eurosat import EuroSAT
 from .face_pointing import FacePointing
 from .fashion_mnist import FashionMNIST
 
@@ -61,6 +62,7 @@ __all__ = [
     "DSprites",
     "DTD",
     "EMNIST",
+    "EuroSAT",
     "FacePointing",
     "FashionMNIST",
     "FGVCAircraft",
