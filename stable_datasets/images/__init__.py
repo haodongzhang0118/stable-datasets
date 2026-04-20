@@ -29,6 +29,7 @@ from .k_mnist import KMNIST
 from .linnaeus5 import Linnaeus5
 from .med_mnist import MedMNIST
 from .not_mnist import NotMNIST
+from .oxford_pet import OxfordPet
 
 # from .imagenette import Imagenette
 # from .mnist import MNIST
@@ -72,6 +73,7 @@ __all__ = [
     "Linnaeus5",
     "MedMNIST",
     "NotMNIST",
+    "OxfordPet",
     "RockPaperScissor",
     "Shapes3D",
     "SmallNORB",
